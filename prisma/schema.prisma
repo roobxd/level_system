@@ -10,11 +10,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
   id Int @id @default(autoincrement())
   email String @unique
   password String
   level Int @default(0)
   xp Int @default(0)
+
+  joinedGiveaways GiveawayJoins[]
+
+  wonGiveaways Giveaway[]
+}
+
+model Giveaway {
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  minLevel Int
+  amountOfWinners Int
+
+  participants GiveawayJoins[]
+  winners User[]
+}
+
+model GiveawayJoins {
+  id Int @id @default(autoincrement())
+  userId Int
+  giveawayId Int
+  user User @relation(fields: [userId], references: [id])
+  giveaway Giveaway @relation(fields: [giveawayId], references: [id])
+  @@unique([userId, giveawayId])
 }

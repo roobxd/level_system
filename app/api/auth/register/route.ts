@@ -1,9 +1,8 @@
-import { generateToken } from "@/app/util/jwt";
-import prismaClient from "@/app/util/prisma";
-import { User } from "@prisma/client";
+import { generateToken } from "@/app/util/server/jwt";
 import { NextRequest, NextResponse } from "next/server";
 import { serialize } from "cookie"
 import { hash } from "bcrypt";
+import prismaClient from "@/app/util/server/prisma";
 
 export async function POST(request: NextRequest) {
     try {
@@ -13,14 +12,15 @@ export async function POST(request: NextRequest) {
 
         const hPassword = await hash(password, 10)
 
-        const user: User = await prismaClient.user.create({
+
+        const user = await prismaClient.user.create({
             data: {
                 email,
                 password: hPassword
             }
         })
 
-        const token = generateToken({user})
+        const token = generateToken({id: user.id})
         const response = NextResponse.json({ token });
 
         response.headers.set('Set-Cookie', serialize('token', token, {
@@ -32,8 +32,8 @@ export async function POST(request: NextRequest) {
           }));
          
         return response
-        
+
     } catch(error) {
-        return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
+        return NextResponse.json({ error }, { status: 400 });
     }
 }
