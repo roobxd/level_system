@@ -2,24 +2,28 @@
 import useSWR from "swr"
 import fetcher from "../util/client/fetcher"
 import { User } from "@prisma/client"
+import {LogoutButton} from "./components/LogoutButton"
+import {ProfileInformation} from "./components/ProfileInformation"
+import { FunctionComponent } from "react"
 
+/**
+ * Profile Screen component - handles all profile related data
+ * @returns FunctionComponent describing the profile page layout
+ */
+const Profile: FunctionComponent = () => {
+    const {data, error} = useSWR<{user: Omit<User, "password" | "id">}>('./api/profile', fetcher)
 
-export default function Profile() {
-    const {data, error} = useSWR<{user: User}>('./api/profile', fetcher)
-
-    
     return (
-        <div className="flex flex-col min-h-screen p-12 bg-purple-700">
+        <>
             <div className="flex flex-row mb-8 min-w-max justify-between">
-                <h2 className="font-semi-bold text-5xl">Profile</h2>
-                <button className="flex ">
-                    <h2 className="font-semi-bold text-1xl">Logout</h2>
-                </button>
-            </div>
-            <div className="flex flex-col p-4 rounded-md bg-white">
-                <h2 className="font-semi-bold text-3xl text-black">Information</h2>
-                
-            </div>
-        </div>
+                <h2 className="font-semi-bold text-5xl text-white">Profile</h2>
+                <LogoutButton/>
+            </div>  
+
+            <ProfileInformation profile={data?.user}/>
+        
+        </>
     )
 }
+
+export default Profile;

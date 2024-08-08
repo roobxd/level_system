@@ -1,3 +1,9 @@
+/**
+ * Function for our useSWR hook.
+ * @param input 
+ * @param init 
+ * @returns the response payload in JSON format
+ */
 export default async function fetcher<JSON = any>(
     input: RequestInfo,
     init?: RequestInit
