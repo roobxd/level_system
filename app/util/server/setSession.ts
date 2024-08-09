@@ -17,7 +17,7 @@ const DEFAULT_SERIALIZE_OPTIONS: CookieSerializeOptions = {
  * @param userId 
  * @returns 
  */
-async function setSession(userId: number): Promise<NextResponse> {
+async function setSession(userId: string): Promise<NextResponse> {
     const token = await generateToken({ id: userId, expires: 60 * 60 });
     
     const response = NextResponse.json({ success: true });

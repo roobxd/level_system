@@ -3,7 +3,7 @@ import { SignJWT, jwtVerify, JWTPayload } from "jose";
 
 // Custom Payload interface to match the return types
 interface LevelJwtPayload extends JWTPayload {
-  id: number
+  id: string;
 }
 
 /**

@@ -19,10 +19,12 @@ export function middleware(request: NextRequest) {
 
     
     if (IGNORED_ROUTES.includes(pathname)) {
+        console.log("pa")
         return NextResponse.next();
     }
 
 
+    console.log("cook ",cookie)
     // Prevent users with invalid or non existing cookies from going into any of the routes
     if(!cookie) {
         return NextResponse.redirect(new URL("/", request.url))

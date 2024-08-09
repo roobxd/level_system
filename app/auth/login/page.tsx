@@ -45,12 +45,12 @@ const Home: FunctionComponent = () => {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
-      <h2 className="font-bold text-4xl text-white pb-8">Glitchy</h2>
+      <h2 className="font-bold text-4xl text-white pb-8">Gleetchy</h2>
       <div className="flex flex-col items-center bg-white shadow-md rounded-md p-4">
         <form className="flex flex-col items-center" onSubmit={handleSubmit}>
           {errorText && <h4 className="text-red-500">{errorText}</h4>}
           <div className="flex flex-col p-4">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" className="text-black">Email</label>
             <input
               id="email"
               name="email"
@@ -60,7 +60,7 @@ const Home: FunctionComponent = () => {
             />
           </div>
           <div className="flex flex-col p-4">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" className="text-black">Password</label>
             <input
               id="password"
               name="password"

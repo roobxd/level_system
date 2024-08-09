@@ -26,7 +26,6 @@ export const ProfileInformation: FunctionComponent<ProfileInformationProps> = ({
                             <h3>You are currently level {profile.level}</h3>
                             <h3>You need {100 - profile.xp} more xp to level up!</h3>
                         </div>
-
                     </>
                 )
             }

@@ -1,3 +1,4 @@
+'use client'
 import { useRouter } from "next/navigation";
 import { FunctionComponent } from "react";
 
@@ -22,7 +23,7 @@ export const LogoutButton: FunctionComponent = () => {
     };
 
     return (
-        <button onClick={handleLogout} className="rounded-md hover:bg-purple-500 ease-in-out transition-colors duration-300 text-white p-2">
+        <button onClick={handleLogout} className="rounded-md text-white hover:text-transparent transition duration-150">
             Logout
         </button>
     )

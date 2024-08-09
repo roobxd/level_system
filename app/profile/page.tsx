@@ -2,7 +2,6 @@
 import useSWR from "swr"
 import fetcher from "../util/client/fetcher"
 import { User } from "@prisma/client"
-import {LogoutButton} from "./components/LogoutButton"
 import {ProfileInformation} from "./components/ProfileInformation"
 import { FunctionComponent } from "react"
 
@@ -17,10 +16,10 @@ const Profile: FunctionComponent = () => {
         <>
             <div className="flex flex-row mb-8 min-w-max justify-between">
                 <h2 className="font-semi-bold text-5xl text-white">Profile</h2>
-                <LogoutButton/>
             </div>  
 
             <ProfileInformation profile={data?.user}/>
+
         
         </>
     )
