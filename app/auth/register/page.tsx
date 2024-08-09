@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, FunctionComponent, useState } from "react";
 /**
@@ -41,7 +42,7 @@ const Register: FunctionComponent = () => {
     }
   
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-purple-700">
+      <main className="flex min-h-screen flex-col items-center justify-center">
         <h2 className="font-bold text-4xl text-white pb-8">Glitchy</h2>
         <div className="flex flex-col items-center bg-white shadow-md rounded-md p-4">
           <form className="flex flex-col items-center" onSubmit={handleSubmit}>
@@ -72,13 +73,12 @@ const Register: FunctionComponent = () => {
             >
               <h6 className="text-white p-2">Register</h6>
             </button>
-            <button
-              type="button"
+            <Link
+              href="/auth/login"
               className="mt-4"
-              onClick={router.back}
             >
               <h6 className="text-gray-400">Login</h6>
-            </button>
+            </Link>
           </form>
         </div>
       </main>

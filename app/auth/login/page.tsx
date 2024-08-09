@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, FunctionComponent, useState } from "react";
 
@@ -74,13 +75,12 @@ const Home: FunctionComponent = () => {
           >
             <h6 className="text-white p-2">Login</h6>
           </button>
-          <button
-            type="button"
+          <Link
+            href="/auth/register"
             className="mt-4"
-            onClick={() => router.push("auth/register")}
           >
             <h6 className="text-gray-400">Register</h6>
-          </button>
+          </Link>
         </form>
       </div>
     </div>

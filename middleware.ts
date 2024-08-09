@@ -15,9 +15,13 @@ export function middleware(request: NextRequest) {
     const cookie = request.cookies.get("session");
 
 
+    console.log(pathname)
+
+    
     if (IGNORED_ROUTES.includes(pathname)) {
         return NextResponse.next();
     }
+
 
     // Prevent users with invalid or non existing cookies from going into any of the routes
     if(!cookie) {
